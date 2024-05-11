@@ -288,9 +288,6 @@ export class PretrainedConfig {
         local_files_only = false,
         revision = 'main',
     } = {}) {
-        if (config && !(config instanceof PretrainedConfig)) {
-            config = new PretrainedConfig(config);
-        }
 
         const data = config ?? await loadConfig(pretrained_model_name_or_path, {
             progress_callback,
