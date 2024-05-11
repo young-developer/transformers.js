@@ -1676,7 +1676,7 @@ export class AutomaticSpeechRecognitionPipeline extends (/** @type {new (options
 
     /** @type {AutomaticSpeechRecognitionPipelineCallback} */
     async _call(audio, kwargs = {}) {
-        throw new Error('This pipeline is not yet supported in Transformers.js v3.'); // TODO: Remove when implemented
+        // throw new Error('This pipeline is not yet supported in Transformers.js v3.'); // TODO: Remove when implemented
         switch (this.model.config.model_type) {
             case 'whisper':
                 return this._call_whisper(audio, kwargs)
@@ -3189,6 +3189,7 @@ export async function pipeline(
         device = null,
         dtype = null,
         model_file_name = null,
+        use_external_data_format = false,
         session_options = {},
     } = {}
 ) {
@@ -3220,6 +3221,7 @@ export async function pipeline(
         dtype,
         model_file_name,
         session_options,
+        use_external_data_format
     }
 
     const classes = new Map([

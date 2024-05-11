@@ -1671,12 +1671,14 @@ export class SeamlessM4TFeatureExtractor extends FeatureExtractor {
         // Kaldi compliance: 16-bit signed integers
         // 32768 == 2 ** 15
         waveform = waveform.map((/** @type {number} */ x) => x * 32768)
+        const frame_length = 400;
+        const hop_length = 160;
 
         return spectrogram(
             waveform,
             this.window, // window
-            400, // frame_length
-            160, // hop_length
+            frame_length, // frame_length
+            hop_length, // hop_length
             {
                 fft_length: 512,
                 power: 2.0,
@@ -1688,7 +1690,7 @@ export class SeamlessM4TFeatureExtractor extends FeatureExtractor {
                 remove_dc_offset: true,
 
                 // Custom
-                max_num_frames: max_length,
+                max_num_frames: max_length ?? Math.floor(1 + Math.floor((waveform.length - frame_length) / hop_length)),
                 transpose: true,
             }
         )
