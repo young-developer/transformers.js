@@ -1715,7 +1715,7 @@ export class SeamlessM4TFeatureExtractor extends FeatureExtractor {
         validate_audio_inputs(audio, 'SeamlessM4TFeatureExtractor');
 
         let features = this._extract_fbank_features(audio, this.config.max_length);
-        const features_data = features.data;
+        let features_data = features.data;
 
         if (do_normalize_per_mel_bins) {
             const [num_features, feature_size] = features.dims;
@@ -1752,6 +1752,7 @@ export class SeamlessM4TFeatureExtractor extends FeatureExtractor {
                 padded_data.fill(this.config.padding_value, features_data.length)
 
                 const numPaddedFrames = num_frames + pad_size;
+                features_data = padded_data;
                 features = {
                     data: padded_data,
                     dims: [numPaddedFrames, num_channels],
