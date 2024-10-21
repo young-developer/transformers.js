@@ -13,21 +13,11 @@ README_TEMPLATE = """
 </p>
 
 <p align="center">
-    <a href="https://www.npmjs.com/package/@huggingface/transformers">
-        <img alt="NPM" src="https://img.shields.io/npm/v/@huggingface/transformers">
-    </a>
-    <a href="https://www.npmjs.com/package/@huggingface/transformers">
-        <img alt="NPM Downloads" src="https://img.shields.io/npm/dw/@huggingface/transformers">
-    </a>
-    <a href="https://www.jsdelivr.com/package/npm/@huggingface/transformers">
-        <img alt="jsDelivr Hits" src="https://img.shields.io/jsdelivr/npm/hw/@huggingface/transformers">
-    </a>
-    <a href="https://github.com/huggingface/transformers.js/blob/main/LICENSE">
-        <img alt="License" src="https://img.shields.io/github/license/huggingface/transformers.js?color=blue">
-    </a>
-    <a href="https://huggingface.co/docs/transformers.js/index">
-        <img alt="Documentation" src="https://img.shields.io/website/http/huggingface.co/docs/transformers.js/index.svg?down_color=red&down_message=offline&up_message=online">
-    </a>
+    <a href="https://www.npmjs.com/package/@huggingface/transformers"><img alt="NPM" src="https://img.shields.io/npm/v/@huggingface/transformers"></a>
+    <a href="https://www.npmjs.com/package/@huggingface/transformers"><img alt="NPM Downloads" src="https://img.shields.io/npm/dw/@huggingface/transformers"></a>
+    <a href="https://www.jsdelivr.com/package/npm/@huggingface/transformers"><img alt="jsDelivr Hits" src="https://img.shields.io/jsdelivr/npm/hw/@huggingface/transformers"></a>
+    <a href="https://github.com/huggingface/transformers.js/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/huggingface/transformers.js?color=blue"></a>
+    <a href="https://huggingface.co/docs/transformers.js/index"><img alt="Documentation" src="https://img.shields.io/website/http/huggingface.co/docs/transformers.js/index.svg?down_color=red&down_message=offline&up_message=online"></a>
 </p>
 
 {intro}
