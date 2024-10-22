@@ -11,25 +11,19 @@
 </p>
 
 <p align="center">
-    <a href="https://www.npmjs.com/package/@huggingface/transformers">
-        <img alt="NPM" src="https://img.shields.io/npm/v/@huggingface/transformers">
-    </a>
-    <a href="https://www.npmjs.com/package/@huggingface/transformers">
-        <img alt="NPM Downloads" src="https://img.shields.io/npm/dw/@huggingface/transformers">
-    </a>
-    <a href="https://www.jsdelivr.com/package/npm/@huggingface/transformers">
-        <img alt="jsDelivr Hits" src="https://img.shields.io/jsdelivr/npm/hw/@huggingface/transformers">
-    </a>
-    <a href="https://github.com/huggingface/transformers.js/blob/main/LICENSE">
-        <img alt="License" src="https://img.shields.io/github/license/huggingface/transformers.js?color=blue">
-    </a>
-    <a href="https://huggingface.co/docs/transformers.js/index">
-        <img alt="Documentation" src="https://img.shields.io/website/http/huggingface.co/docs/transformers.js/index.svg?down_color=red&down_message=offline&up_message=online">
-    </a>
+    <a href="https://www.npmjs.com/package/@huggingface/transformers"><img alt="NPM" src="https://img.shields.io/npm/v/@huggingface/transformers"></a>
+    <a href="https://www.npmjs.com/package/@huggingface/transformers"><img alt="NPM Downloads" src="https://img.shields.io/npm/dw/@huggingface/transformers"></a>
+    <a href="https://www.jsdelivr.com/package/npm/@huggingface/transformers"><img alt="jsDelivr Hits" src="https://img.shields.io/jsdelivr/npm/hw/@huggingface/transformers"></a>
+    <a href="https://github.com/huggingface/transformers.js/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/huggingface/transformers.js?color=blue"></a>
+    <a href="https://huggingface.co/docs/transformers.js/index"><img alt="Documentation" src="https://img.shields.io/website/http/huggingface.co/docs/transformers.js/index.svg?down_color=red&down_message=offline&up_message=online"></a>
 </p>
 
 
-State-of-the-art Machine Learning for the web. Run 🤗 Transformers directly in your browser, with no need for a server!
+<h3 align="center">
+  <p>State-of-the-art Machine Learning for the Web</p>
+</h3>
+
+Run 🤗 Transformers directly in your browser, with no need for a server!
 
 Transformers.js is designed to be functionally equivalent to Hugging Face's [transformers](https://github.com/huggingface/transformers) python library, meaning you can run the same pretrained models using a very similar API. These models support common tasks in different modalities, such as:
   - 📝 **Natural Language Processing**: text classification, named entity recognition, question answering, language modeling, summarization, translation, multiple choice, and text generation.
@@ -40,6 +34,22 @@ Transformers.js is designed to be functionally equivalent to Hugging Face's [tra
 Transformers.js uses [ONNX Runtime](https://onnxruntime.ai/) to run models in the browser. The best part about it, is that you can easily [convert](#convert-your-models-to-onnx) your pretrained PyTorch, TensorFlow, or JAX models to ONNX using [🤗 Optimum](https://github.com/huggingface/optimum#onnx--onnx-runtime). 
 
 For more information, check out the full [documentation](https://huggingface.co/docs/transformers.js).
+
+
+## Installation
+
+
+To install via [NPM](https://www.npmjs.com/package/@huggingface/transformers), run:
+```bash
+npm i @huggingface/transformers
+```
+
+Alternatively, you can use it in vanilla JS, without any bundler, by using a CDN or static hosting. For example, using [ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), you can import the library with:
+```html
+<script type="module">
+    import { pipeline } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
+</script>
+```
 
 
 ## Quick tour
@@ -72,9 +82,9 @@ out = pipe('I love transformers!')
 import { pipeline } from '@huggingface/transformers';
 
 // Allocate a pipeline for sentiment-analysis
-let pipe = await pipeline('sentiment-analysis');
+const pipe = await pipeline('sentiment-analysis');
 
-let out = await pipe('I love transformers!');
+const out = await pipe('I love transformers!');
 // [{'label': 'POSITIVE', 'score': 0.999817686}]
 ```
 
@@ -86,29 +96,40 @@ let out = await pipe('I love transformers!');
 You can also use a different model by specifying the model id or path as the second argument to the `pipeline` function. For example:
 ```javascript
 // Use a different model for sentiment-analysis
-let pipe = await pipeline('sentiment-analysis', 'Xenova/bert-base-multilingual-uncased-sentiment');
+const pipe = await pipeline('sentiment-analysis', 'Xenova/bert-base-multilingual-uncased-sentiment');
 ```
 
-
-## Installation
-
-
-To install via [NPM](https://www.npmjs.com/package/@huggingface/transformers), run:
-```bash
-npm i @huggingface/transformers
+By default, when running in the browser, the model will be run on your CPU (via WASM). If you would like
+to run the model on your GPU (via WebGPU), you can do this by setting `device: 'webgpu'`, for example:
+```javascript
+// Run the model on WebGPU
+const pipe = await pipeline('sentiment-analysis', 'Xenova/distilbert-base-uncased-finetuned-sst-2-english', {
+  device: 'webgpu',
+});
 ```
 
-Alternatively, you can use it in vanilla JS, without any bundler, by using a CDN or static hosting. For example, using [ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), you can import the library with:
-```html
-<script type="module">
-    import { pipeline } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
-</script>
+For more information, check out the [WebGPU guide](https://huggingface.co/docs/transformers.js/guides/webgpu).
+
+> [!WARNING]
+> The WebGPU API is still experimental in many browsers, so if you run into any issues,
+> please file a [bug report](https://github.com/huggingface/transformers.js/issues/new?title=%5BWebGPU%5D%20Error%20running%20MODEL_ID_GOES_HERE&assignees=&labels=bug,webgpu&projects=&template=1_bug-report.yml).
+
+In resource-constrained environments, such as web browsers, it is advisable to use a quantized version of
+the model to lower bandwidth and optimize performance. This can be achieved by adjusting the `dtype` option,
+which allows you to select the appropriate data type for your model. While the available options may vary
+depending on the specific model, typical choices include `"fp32"` (default for WebGPU), `"fp16"`, `"q8"`
+(default for WASM), and `"q4"`. For more information, check out the [quantization guide](https://huggingface.co/docs/transformers.js/guides/dtypes).
+```javascript
+// Run the model at 4-bit quantization
+const pipe = await pipeline('sentiment-analysis', 'Xenova/distilbert-base-uncased-finetuned-sst-2-english', {
+  dtype: 'q4',
+});
 ```
 
 
 ## Examples
 
-Want to jump straight in? Get started with one of our sample applications/templates:
+Want to jump straight in? Get started with one of our sample applications/templates, which can be found [here](https://github.com/huggingface/transformers.js-examples).
 
 | Name              | Description                      | Links                   |
 |-------------------|----------------------------------|-------------------------------|
