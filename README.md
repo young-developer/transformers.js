@@ -36,6 +36,22 @@ Transformers.js uses [ONNX Runtime](https://onnxruntime.ai/) to run models in th
 For more information, check out the full [documentation](https://huggingface.co/docs/transformers.js).
 
 
+## Installation
+
+
+To install via [NPM](https://www.npmjs.com/package/@huggingface/transformers), run:
+```bash
+npm i @huggingface/transformers
+```
+
+Alternatively, you can use it in vanilla JS, without any bundler, by using a CDN or static hosting. For example, using [ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), you can import the library with:
+```html
+<script type="module">
+    import { pipeline } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
+</script>
+```
+
+
 ## Quick tour
 
 
@@ -108,22 +124,6 @@ depending on the specific model, typical choices include `"fp32"` (default for W
 const pipe = await pipeline('sentiment-analysis', 'Xenova/distilbert-base-uncased-finetuned-sst-2-english', {
   dtype: 'q4',
 });
-```
-
-
-## Installation
-
-
-To install via [NPM](https://www.npmjs.com/package/@huggingface/transformers), run:
-```bash
-npm i @huggingface/transformers
-```
-
-Alternatively, you can use it in vanilla JS, without any bundler, by using a CDN or static hosting. For example, using [ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), you can import the library with:
-```html
-<script type="module">
-    import { pipeline } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0';
-</script>
 ```
 
 

@@ -22,13 +22,13 @@ README_TEMPLATE = """
 
 {intro}
 
-## Quick tour
-
-{quick_tour}
-
 ## Installation
 
 {installation}
+
+## Quick tour
+
+{quick_tour}
 
 ## Examples
 
