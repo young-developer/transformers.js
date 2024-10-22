@@ -88,7 +88,7 @@ to run the model on your GPU (via WebGPU), you can do this by setting `device: '
 ```javascript
 // Run the model on WebGPU
 const pipe = await pipeline('sentiment-analysis', 'Xenova/distilbert-base-uncased-finetuned-sst-2-english', {
-  device: 'webgpu'
+  device: 'webgpu',
 });
 ```
 
