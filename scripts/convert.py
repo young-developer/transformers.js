@@ -41,6 +41,7 @@ NO_PER_CHANNEL_REDUCE_RANGE_MODELS = {
     'starcoder2',
     'openelm',
     'gemma',
+    'mobilellm',
 
     # Encoder-decoder models
     'whisper',
